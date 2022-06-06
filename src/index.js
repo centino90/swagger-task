@@ -27,7 +27,7 @@ for (const route of [registerRoute, loginRoute, createPostRoute, postsRoute]) {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.use(ui(spec, '/docs'));
+app.use(ui(spec, '/v1'));
 app.use(validate(spec));
 
 app.listen(port, console.log(`Server on ${port}`));

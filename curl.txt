@@ -3,12 +3,12 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "password": "string",
-  "email": "string",
-  "userId": "string",
-  "userIdType": "string",
-  "payload": "string",
-  "accountNumber": "string"
+  "password": "password",
+  "email": "testemail@gmail.com",
+  "userId": "12312314",
+  "userIdType": "sample-type",
+  "payload": "some payload",
+  "accountNumber": "12314123"
 }'
 
 curl -X 'POST' \
@@ -16,8 +16,8 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "email": "string",
-  "password": "string"
+  "email": "testemail@gmail.com",
+  "password": "password"
 }'
 
 curl -X 'GET' \
@@ -30,7 +30,7 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "author": "string",
-  "title": "string",
-  "body": "string"
+  "author": "Aj",
+  "title": "This is my post",
+  "body": "First paragraph..."
 }'
