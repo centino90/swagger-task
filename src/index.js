@@ -19,14 +19,14 @@ if (!swagger.validateDocument(spec)) {
 const port = process.env.PORT || 3000;
 
 const app = new koa();
-const router = Router({prefix: '/v2'});
+const router = Router({prefix: '/v1'});
 
 for (const route of [registerRoute, loginRoute, createPostRoute, postsRoute]) {
   route(router);
 }
 
 app.use(bodyParser());
-app.use(ui(spec, '/v2'));
+app.use(ui(spec, '/docs'));
 app.use(validate(spec));
 app.use(router.routes());
 app.use(router.allowedMethods());
