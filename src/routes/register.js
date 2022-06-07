@@ -1,5 +1,7 @@
 export const routes = (router) => {
   router.post('/register', async (ctx) => {
-    ctx.body = 'User is Registered';
+    ctx.type = 'application/json';
+    ctx.body = ctx.request.body
+    ctx.status = 200;
   });
 };

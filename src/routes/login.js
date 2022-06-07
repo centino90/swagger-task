@@ -1,5 +1,7 @@
 export const routes = (router) => {
   router.post('/login', async (ctx) => {
-    ctx.body = 'User is Logged in';
+    ctx.type = 'application/json';
+    ctx.body = ctx.request.body
+    ctx.status = 200;
   });
 };

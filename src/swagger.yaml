@@ -1,12 +1,12 @@
 # swagger.yaml
 
-swagger: '2.0'
+swagger: "2.0"
 info:
   version: 1.0.0
   title: Swagger Practice App
   license:
     name: Proprietary
-basePath: /v1
+basePath: /v2
 consumes:
   - application/json
 produces:
@@ -16,18 +16,18 @@ schemes:
   - https
 
 paths:
-  '/swagger.json':
+  "/swagger.json":
     get:
       tags:
         - Spec
       operationId: retrieveSpec
       description: Retrieve OpenAPI spec
       responses:
-        '200':
+        "200":
           description: Successful
           schema:
             type: object
-  '/register':
+  "/register":
     post:
       operationId: adminRegisterUser
       description: Admin registers a new user
@@ -38,13 +38,13 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/UserRegisterBase'
+            $ref: "#/definitions/UserRegisterBase"
       responses:
-        '200':
+        "200":
           description: User is Registered
           schema:
             type: object
-        '400':
+        "400":
           description: Bad Request
           schema:
             type: object
@@ -52,24 +52,24 @@ paths:
           description: Unexpected Error
           schema:
             type: object
-  '/login':
+  "/login":
     post:
       operationId: userLogIn
       description: User logs in
       tags:
         - LogIn
       parameters:
-        - name: user
+        - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/UserLogInBase'
+            $ref: "#/definitions/UserLogInBase"
       responses:
-        '200':
+        "200":
           description: User is Logged In
           schema:
             type: object
-        '400':
+        "400":
           description: Bad Request
           schema:
             type: object
@@ -77,18 +77,19 @@ paths:
           description: Unexpected Error
           schema:
             type: object
-  '/posts':
+
+  "/posts":
     get:
       operationId: getPosts
       description: Get all posts
       tags:
         - GetPosts
       responses:
-        '200':
+        "200":
           description: List of Posts
           schema:
-            type: object
-        '400':
+            $ref: "#/definitions/PostsBase"
+        "400":
           description: Bad Request
           schema:
             type: object
@@ -96,7 +97,7 @@ paths:
           description: Unexpected Error
           schema:
             type: object
-  '/create-post':
+  "/create-post":
     post:
       operationId: createPost
       description: Create a post
@@ -107,20 +108,20 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/CreatePostBase'
+            $ref: "#/definitions/CreatePostBase"
       responses:
-        '200':
+        "200":
           description: Created a post
           schema:
-              type: object
-        '400':
+            type: object
+        "400":
           description: Bad Request
           schema:
             type: object
         default:
           description: Unexpected Error
           schema:
-            type: object            
+            type: object
 
 definitions:
   PostsBase:
@@ -146,7 +147,7 @@ definitions:
       title:
         type: string
       body:
-        type: string    
+        type: string
     type: object
   UserRegisterBase:
     required:
@@ -171,10 +172,10 @@ definitions:
       accountNumber:
         type: string
   UserLogInBase:
+    type: object
     required:
       - email
       - password
-    type: object
     properties:
       email:
         type: string
