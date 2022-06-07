@@ -19,17 +19,20 @@ if (!swagger.validateDocument(spec)) {
 const port = process.env.PORT || 3000;
 
 const app = new koa();
-const router = Router({prefix: '/v1'});
+const router = Router({prefix: spec.basePath});
 
 for (const route of [registerRoute, loginRoute, createPostRoute, postsRoute]) {
   route(router);
 }
 
 app.use(bodyParser());
-app.use(ui(spec, '/docs'));
+
 app.use(validate(spec));
+
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+app.use(ui(spec, '/docs'));
 
 app.listen(port, console.log(`Server on ${port}`));
 
