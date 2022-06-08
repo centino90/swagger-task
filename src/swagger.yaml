@@ -64,7 +64,7 @@ paths:
         "200":
           description: User is Logged In
           schema:
-            type: string
+            type: object
         "400":
           description: Bad Request
           schema:
